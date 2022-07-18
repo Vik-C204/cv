@@ -17,7 +17,7 @@ const App = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [title, setTitle] = useState("");
-    const [photo, setPhoto] = useState(undefined);
+    const [photo, setPhoto] = useState("https://michalosman.github.io/cv-application/static/media/empty_avatar.cedf234c.png");
     const [address, setAddress] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");

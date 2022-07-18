@@ -10,8 +10,8 @@ const Output = (props) => {
            <Box bgColor={"#163e72"} width={"100%"} p={4}>
 
                 <Flex flexDir={"column"} justifyContent={"space-around"}>
-                    <HStack p={4} ><Heading overflowWrap={"anywhere"} color={"#ffffff"}> {props.firstName} </Heading> <Heading overflowWrap={"anywhere"} color={"white"} as={"h1"}>  {props.lastName} </Heading> </HStack>
-                    <Heading overflowWrap={"revert-layer"} color={"white"} p={4} size={"lg"} > {props.title} </Heading>
+                    <HStack flexWrap={"wrap"} p={4} ><Heading overflowWrap={"anywhere"} color={"#ffffff"}> {props.firstName} </Heading> <Heading overflowWrap={"anywhere"} color={"white"} as={"h2"}>  {props.lastName} </Heading> </HStack>
+                    <Heading overflowWrap={"anywhere"} color={"white"} p={4} size={"lg"} > {props.title} </Heading>
                 </Flex>
 
            </Box>
@@ -60,7 +60,7 @@ const Output = (props) => {
                             objectFit={"contain"}
                             borderRadius={"2xl"}
 
-                            src={"https://michalosman.github.io/cv-application/static/media/example_photo.7a684f97.jpg"}/>
+                            src={props.photo}/>
 
                     </Box>
 

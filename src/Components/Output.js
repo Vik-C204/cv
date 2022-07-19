@@ -94,18 +94,18 @@ const Output = (props) =>  {
 
                         <Heading mt={2} size={"md"} color={"#163e72"}> Personal Details </Heading>
                         <Divider borderColor={"#333"} />
-                        <Text> Address </Text>
+                        <Text fontWeight={"bold"}> Address </Text>
                         <Text fontSize={"xs"}> {props.adress} </Text>
-                        <Text> Phone Number </Text>
+                        <Text fontWeight={"bold"}> Phone Number </Text>
                         <Text fontSize={"xs"}> {props.phone} </Text>
-                        <Text> Email </Text>
+                        <Text fontWeight={"bold"}> Email </Text>
                         <Text fontSize={"xs"} overflowWrap={"anywhere"}> {props.email}</Text>
 
                     </VStack>
 
 
 
-                    <Spacer />
+
 
 
 
@@ -114,7 +114,7 @@ const Output = (props) =>  {
                 </Box>
 
             </Flex>
-        <Button colorScheme={"primary"} onClick={handlePrint}> Print </Button>
+        <Button colorScheme={"primary"} onClick={handlePrint}> Generate PDF </Button>
 
     </Flex> </div>
     </> )

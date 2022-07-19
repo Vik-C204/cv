@@ -25,16 +25,18 @@ const Output = (props) => {
 
                     <Heading mt={4} size={"md"} color={"#163e72"}> Experience  </Heading>
                     <Divider borderColor={"#333"} />
-                    <HStack spacing={10}>
+                    {props.exp.map((e) => (
+                    <HStack key={e.id} spacing={10}>
 
-                        <Text> 2015 - Present </Text>
+                        <Text> {e.from} - {e.to} </Text>
                         <VStack spacing={0.5} align={"flex-start"}>
-                            <Text> Senior </Text>
-                            <Text> Facebook </Text>
+                            <Text> {e.position} </Text>
+                            <Text> {e.company} </Text>
 
                         </VStack>
 
                     </HStack>
+                    ))}
 
                     <Heading mt={4} size={"md"} color={"#163e72"}> Education  </Heading>
                     <Divider borderColor={"#333"} />

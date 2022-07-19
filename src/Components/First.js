@@ -3,7 +3,7 @@ import General from "./General.js"
 import Experience from "./Experience";
 import Education from "./Education";
 import App from "../App";
-import {Box, Button} from "@chakra-ui/react";
+import {Box, Button, Heading} from "@chakra-ui/react";
 
 const First = (props) => {
     return <Box bgColor={"#eeeeee"} border={"2px solid black"}>
@@ -15,7 +15,8 @@ const First = (props) => {
                  phone={props.phone} setPhone={props.setPhone}
                  email={props.email} setEmail={props.setEmail}
                  description={props.description} setDescription={props.setDescription} />
-        <Experience />
+        <Experience handleChange={props.handleChange} handleAdd={props.handleAdd} handleDelete={props.handleDelete}
+                    exp={props.exp} />
         <Education />
     </Box>
 }

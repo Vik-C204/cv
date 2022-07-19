@@ -22,6 +22,69 @@ const App = () => {
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [description, setDescription] = useState("");
+    
+    const [exp, setExp] = useState({ experience: [{
+        id: uniqid(),
+        position: "",
+        company: "",
+        city: "",
+        from: "",
+        to: "",
+    },]})
+
+    const handleChangeExperience = (e, id) => {
+        const { name, value } = e.target
+
+        setExp((prevState) => {
+            const newExperience = prevState.experience.map((experienceItem) => {
+                if (experienceItem.id === id) {
+                    return { ...experienceItem, [name]: value }
+                }
+                return experienceItem
+            })
+            return { ...prevState, experience: [...newExperience] }
+        })
+    }
+
+
+
+
+
+    const handleAddExperience = () => {
+        setExp((prevState) => ({
+            ...prevState,
+            experience: [
+                ...prevState.experience,
+                {
+                    id: uniqid(),
+                    position: '',
+                    company: '',
+                    city: '',
+                    from: '',
+                    to: '',
+                },
+            ],
+        }))
+    }
+
+    const handleDeleteExperience = (id) => {
+        setExp((prevState) => {
+            const newExperience = prevState.experience.filter(
+                (experienceItem) => experienceItem.id !== id
+            )
+            return { ...prevState, experience: [...newExperience] }
+        })
+    }
+      
+
+
+    const [position, setPosition] = useState("");
+    const [company, setCompany] = useState("");
+    const [city, setCity] = useState("");
+    const [from, setFrom] = useState("");
+    const [to, setTo] = useState("");
+
+
 
     const theme1 = useTheme();
 
@@ -39,7 +102,9 @@ const App = () => {
                                                photo={photo} setPhoto={setPhoto}
                                                adress={address} setAddress={setAddress}
                                                phone={phone} setPhone={setPhone}
-                                               email={email} setEmail={setEmail}
+                                               email={email} setEmail={setEmail} handleChange={handleChangeExperience}
+                                               handleAdd={handleAddExperience} handleDelete={handleDeleteExperience}
+                                               exp={exp.experience}
                                                description={description} setDescription={setDescription}/> </Box>
                     <Box width={"45%"}> <Output firstName={firstName}
                                                 lastName={lastName}
@@ -48,6 +113,7 @@ const App = () => {
                                                 adress={address}
                                                 phone={phone}
                                                 email={email}
+                                                exp={exp.experience}
                                                 description={description}/>  </Box>
                 </Flex>
 

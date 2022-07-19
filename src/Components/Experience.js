@@ -1,19 +1,47 @@
 import React, { useState } from "react";
-import {Button, Heading, Input, Stack, Textarea} from "@chakra-ui/react";
+import {Box, Button, Heading, Input, Stack, Textarea} from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react"
 
-const Experience = () => {
+const Experience = (props) => {
+
+
+        const experienceItems = props.exp.map((e) => (
+            <Box>
+            <Input value={e.position} placeholder={"Position"} bgColor={"#ffffff"}
+                   onChange={(event) => props.handleChange(event, e.id) }/>
+            <Input value={e.position} placeholder={"Company"} bgColor={"#ffffff"}
+                   onChange={(event) => props.handleChange(event, e.id) }/>
+            <Input value={e.position} placeholder={"City"} bgColor={"#ffffff"}
+                   onChange={(event) => props.handleChange(event, e.id) }/>
+            <Input value={e.position} placeholder={"From"} bgColor={"#ffffff"}
+                   onChange={(event) => props.handleChange(event, e.id) }/>
+            <Input value={e.position} placeholder={"To"} bgColor={"#ffffff"}
+                   onChange={(event) => props.handleChange(event, e.id) }/>
+            <Button colorScheme='primary' variant={"solid"} onClick={() => props.handleDelete(e.id)}> Delete </Button>
+            </Box>
+        ))
+
 
 
     return <Stack p={4}>
+
         <Heading as={"h2"} size={"md"} p={2}> Experience </Heading>
-        <Input placeholder={"Position"} bgColor={"#ffffff"}/>
-        <Input placeholder={"Company"} bgColor={"#ffffff"}/>
-        <Input placeholder={"City"} bgColor={"#ffffff"}/>
-        <Input placeholder={"From"} bgColor={"#ffffff"}/>
-        <Input placeholder={"To"} bgColor={"#ffffff"}/>
-        <Button colorScheme='primary' variant={"solid"}> Delete </Button>
-        <Button colorScheme='primary' variant={"solid"}> Add </Button>
+        {props.exp.map((e) => (
+        <Box key={e.id}>
+            <Input value={e.position} placeholder={"Position"} bgColor={"#ffffff"} name={"position"}
+                   onChange={(event) => props.handleChange(event, e.id) }/>
+            <Input value={e.company} placeholder={"Company"} bgColor={"#ffffff"} name={"company"}
+                   onChange={(event) => props.handleChange(event, e.id) }/>
+            <Input value={e.city} placeholder={"City"} bgColor={"#ffffff"} name={"city"}
+                   onChange={(event) => props.handleChange(event, e.id) }/>
+            <Input value={e.from} placeholder={"From"} bgColor={"#ffffff"} name={"from"}
+                   onChange={(event) => props.handleChange(event, e.id) }/>
+            <Input value={e.to} placeholder={"To"} bgColor={"#ffffff"} name={"to"}
+                   onChange={(event) => props.handleChange(event, e.id) }/>
+            <Button  width={"100%"} colorScheme='primary' variant={"solid"} onClick={() => props.handleDelete(e.id)}> Delete </Button>
+        </Box>
+        ))}
+        <Button colorScheme='primary' variant={"solid"} onClick={props.handleAdd}> Add </Button>
 
 
 

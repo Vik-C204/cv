@@ -6,12 +6,14 @@ import First from "./Components/First";
 import uniqid from "uniqid"
 import theme from "./Theme";
 import { useReactToPrint } from 'react-to-print';
+import "./Components/print.css";
 
-import {ChakraProvider, Flex, Box, Center, Text, Button} from "@chakra-ui/react";
+import {ChakraProvider, Flex, Box, Center, Text, Button, Container} from "@chakra-ui/react";
 import Output from "./Components/Output";
 import Header from "./Components/Header";
 import { extendTheme } from "@chakra-ui/react"
 import { useTheme } from "@chakra-ui/react";
+import styled from "@emotion/styled";
 
 const App = () => {
 
@@ -44,9 +46,9 @@ const App = () => {
             },
         ],})
 
-    const componentRef = useRef()
+    //const componentRef = useRef()
 
-    const handlePrint = useReactToPrint({ content: () => componentRef.current })
+    //const handlePrint = useReactToPrint({ content: () => componentRef.current })
 
     const handleChangeExperience = (e, id) => {
         const { name, value } = e.target
@@ -153,8 +155,8 @@ const App = () => {
 
                 <Header />
 
-                <Flex p={4} bgColor={"#cccccc"} justifyContent={"space-around"}>
-                    <Box width={"45%"}> <First firstName={firstName} setFirstName={setFirstName}
+                <Flex p={4} bgColor={"#cccccc"} justifyContent={"space-evenly"}>
+                     <Box width={"45%"}> <First firstName={firstName} setFirstName={setFirstName}
                                                lastName={lastName} setLastName={setLastName}
                                                title={title} setTitle={setTitle}
                                                photo={photo} setPhoto={setPhoto}
@@ -163,7 +165,7 @@ const App = () => {
                                                email={email} setEmail={setEmail} handleChange={handleChangeExperience}
                                                handleAdd={handleAddExperience} handleDelete={handleDeleteExperience}
                                                exp={exp.experience} edu={exp.education}
-                                               onPrint={handlePrint}
+                                               //onPrint={handlePrint}
                                                handleEChange={handleChangeEducation} handleEAdd={handleAddEducation}
                                                handleEDelete={handleDeleteEducation}
 
@@ -176,8 +178,8 @@ const App = () => {
                                                 phone={phone}
                                                 email={email}
                                                 exp={exp.experience} ed={exp.education}
-                                                ref={componentRef}
-                                                description={description}/>  </Box>
+                                                //ref={componentRef}
+                                               description={description}/> </Box>
                 </Flex>
 
                 <Center height={"5%"} bgColor='primary.500' color={"#ffffff"}>

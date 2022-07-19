@@ -1,34 +1,54 @@
-import React, {  Component  } from "react";
+import React, {  useRef  } from "react";
 import General from "./General.js"
 import Experience from "./Experience";
 import Education from "./Education";
 import App from "../App";
-import {Box, Button, Container, Divider, Flex, Heading, HStack, Image, Text, VStack, WrapItem} from "@chakra-ui/react";
+import { useReactToPrint } from 'react-to-print';
 
-class Output extends Component {
+import {
+    Box,
+    Button,
+    Container,
+    Divider,
+    Flex,
+    Heading,
+    HStack,
+    Image,
+    Spacer,
+    Text,
+    VStack,
+    WrapItem
+} from "@chakra-ui/react";
+import styled from "@emotion/styled";
 
-    render() {
+const Output = (props) =>  {
 
-    return  <Flex  flexDir={"column"} border={"2px solid black"}>
-           <Box bgColor={"#163e72"} width={"100%"} p={4}>
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({content: () => componentRef.current,
+                                                                documentTitle: 'emp-data'});
+
+
+
+    return ( <> <div ref={componentRef}  style={{width: '100%', height: window.innerHeight}}> <Flex flexDir={"column"} border={"2px solid black"} >
+           <Box backgroundColor={"#163e72"} width={"100%"} p={4}>
 
                 <Flex flexDir={"column"} justifyContent={"space-around"}>
-                    <HStack flexWrap={"wrap"} p={4} ><Heading overflowWrap={"anywhere"} color={"#ffffff"}> {this.props.firstName} </Heading> <Heading overflowWrap={"anywhere"} color={"white"} as={"h2"}>  {this.props.lastName} </Heading> </HStack>
-                    <Heading overflowWrap={"anywhere"} color={"white"} p={4} size={"lg"} > {this.props.title} </Heading>
+                    <HStack flexWrap={"wrap"} p={4} ><Heading overflowWrap={"anywhere"} color={"#ffffff"}> {props.firstName} </Heading> <Heading overflowWrap={"anywhere"} color={"white"} as={"h2"}>  {props.lastName} </Heading> </HStack>
+                    <Heading overflowWrap={"anywhere"} color={"white"} p={4} size={"lg"} > {props.title} </Heading>
                 </Flex>
 
            </Box>
 
             <Flex>
-                <Box bgColor={"#eeeeee"} width={"70%"} height={"3xl"} p={4}>
+                <Box bgColor={"#eeeeee"} minHeight={"100%"} width={"70%"} height={"3xl"} p={4}>
 
                     <Heading size={"md"} color={"#163e72"}> Description  </Heading>
                     <Divider borderColor={"#333"} />
-                    <Text> {this.props.description} </Text>
+                    <Text> {props.description} </Text>
 
                     <Heading mt={4} size={"md"} color={"#163e72"}> Experience  </Heading>
                     <Divider borderColor={"#333"} />
-                    {this.props.exp.map((e) => (
+                    {props.exp.map((e) => (
                     <HStack key={e.id} spacing={10}>
 
                         <Text> {e.from} - {e.to} </Text>
@@ -44,7 +64,7 @@ class Output extends Component {
 
                     <Heading mt={4} size={"md"} color={"#163e72"}> Education  </Heading>
                     <Divider borderColor={"#333"} />
-                    {this.props.ed.map((e) => (
+                    {props.ed.map((e) => (
                     <HStack key={e.id} spacing={10}>
 
                         <Text> {e.from} - {e.to} </Text>
@@ -68,20 +88,22 @@ class Output extends Component {
                             objectFit={"contain"}
                             borderRadius={"2xl"}
 
-                            src={this.props.photo}/>
+                            src={props.photo}/>
 
                     </Box>
 
                         <Heading mt={2} size={"md"} color={"#163e72"}> Personal Details </Heading>
                         <Divider borderColor={"#333"} />
                         <Text> Address </Text>
-                        <Text fontSize={"xs"}> {this.props.adress} </Text>
+                        <Text fontSize={"xs"}> {props.adress} </Text>
                         <Text> Phone Number </Text>
-                        <Text fontSize={"xs"}> {this.props.phone} </Text>
+                        <Text fontSize={"xs"}> {props.phone} </Text>
                         <Text> Email </Text>
-                        <Text fontSize={"xs"} overflowWrap={"anywhere"}> {this.props.email}</Text>
+                        <Text fontSize={"xs"} overflowWrap={"anywhere"}> {props.email}</Text>
 
                     </VStack>
+
+                    <Spacer />
 
 
 
@@ -92,8 +114,8 @@ class Output extends Component {
             </Flex>
 
 
-    </Flex>
-
-}}
+    </Flex> </div> <Button onClick={handlePrint}> Print </Button>
+    </> )
+}
 
 export default Output;

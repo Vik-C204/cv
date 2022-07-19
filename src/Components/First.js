@@ -19,7 +19,7 @@ const First = (props) => {
                     exp={props.exp} />
         <Education handleEChange={props.handleEChange} handleEAdd={props.handleEAdd} handleEDelete={props.handleEDelete}
                    ed={props.edu} />
-        <Button onClick={props.onPrint} > Generate PDF </Button>
+
     </Box>
 }
 

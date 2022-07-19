@@ -17,7 +17,9 @@ const First = (props) => {
                  description={props.description} setDescription={props.setDescription} />
         <Experience handleChange={props.handleChange} handleAdd={props.handleAdd} handleDelete={props.handleDelete}
                     exp={props.exp} />
-        <Education />
+        <Education handleEChange={props.handleEChange} handleEAdd={props.handleEAdd} handleEDelete={props.handleEDelete}
+                   ed={props.edu} />
+        <Button onClick={props.onPrint} > Generate PDF </Button>
     </Box>
 }
 

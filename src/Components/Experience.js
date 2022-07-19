@@ -5,22 +5,6 @@ import { extendTheme } from "@chakra-ui/react"
 const Experience = (props) => {
 
 
-        const experienceItems = props.exp.map((e) => (
-            <Box>
-            <Input value={e.position} placeholder={"Position"} bgColor={"#ffffff"}
-                   onChange={(event) => props.handleChange(event, e.id) }/>
-            <Input value={e.position} placeholder={"Company"} bgColor={"#ffffff"}
-                   onChange={(event) => props.handleChange(event, e.id) }/>
-            <Input value={e.position} placeholder={"City"} bgColor={"#ffffff"}
-                   onChange={(event) => props.handleChange(event, e.id) }/>
-            <Input value={e.position} placeholder={"From"} bgColor={"#ffffff"}
-                   onChange={(event) => props.handleChange(event, e.id) }/>
-            <Input value={e.position} placeholder={"To"} bgColor={"#ffffff"}
-                   onChange={(event) => props.handleChange(event, e.id) }/>
-            <Button colorScheme='primary' variant={"solid"} onClick={() => props.handleDelete(e.id)}> Delete </Button>
-            </Box>
-        ))
-
 
 
     return <Stack p={4}>

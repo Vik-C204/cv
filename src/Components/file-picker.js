@@ -1,4 +1,6 @@
 "use strict";
+import General from "./General";
+
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -68,5 +70,5 @@ FilePicker.defaultProps = {
     inputProps: undefined,
     inputGroupProps: undefined
 };
-exports.default = FilePicker;
+export default FilePicker;
 //# sourceMappingURL=file-picker.js.map

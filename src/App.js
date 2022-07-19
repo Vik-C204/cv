@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, {useRef, useState} from "react";
 import General from "./Components/General.js"
 import Experience from "./Components/Experience";
 import Education from "./Components/Education";
 import First from "./Components/First";
 import uniqid from "uniqid"
 import theme from "./Theme";
+import { useReactToPrint } from 'react-to-print';
 
 import {ChakraProvider, Flex, Box, Center, Text, Button} from "@chakra-ui/react";
 import Output from "./Components/Output";
@@ -30,7 +31,22 @@ const App = () => {
         city: "",
         from: "",
         to: "",
-    },]})
+    },],
+        education: [
+            {
+                id: uniqid(),
+                universityName: "",
+                city: "",
+                degreee: "",
+                subject: "",
+                from: "",
+                to: "",
+            },
+        ],})
+
+    const componentRef = useRef()
+
+    const handlePrint = useReactToPrint({ content: () => componentRef.current })
 
     const handleChangeExperience = (e, id) => {
         const { name, value } = e.target
@@ -75,7 +91,49 @@ const App = () => {
             return { ...prevState, experience: [...newExperience] }
         })
     }
-      
+
+    const handleChangeEducation = (e, id) => {
+        const { name, value } = e.target
+
+        setExp((prevState) => {
+            const newEducation = prevState.education.map((educationItem) => {
+                if (educationItem.id === id) {
+                    return { ...educationItem, [name]: value }
+                }
+                return educationItem
+            })
+            return { ...prevState, education: [...newEducation] }
+        })
+    }
+
+    const handleAddEducation = () => {
+        setExp((prevState) => ({
+            ...prevState,
+            education: [
+                ...prevState.education,
+                {
+                    id: uniqid(),
+                    universityName: '',
+                    city: '',
+                    degreee: '',
+                    subject: '',
+                    from: '',
+                    to: '',
+                },
+            ],
+        }))
+    }
+
+    const handleDeleteEducation = (id) => {
+        setExp((prevState) => {
+            const newEducation = prevState.education.filter(
+                (educationItem) => educationItem.id !== id
+            )
+            return { ...prevState, education: [...newEducation] }
+        })
+    }
+
+
 
 
     const [position, setPosition] = useState("");
@@ -104,7 +162,11 @@ const App = () => {
                                                phone={phone} setPhone={setPhone}
                                                email={email} setEmail={setEmail} handleChange={handleChangeExperience}
                                                handleAdd={handleAddExperience} handleDelete={handleDeleteExperience}
-                                               exp={exp.experience}
+                                               exp={exp.experience} edu={exp.education}
+                                               onPrint={handlePrint}
+                                               handleEChange={handleChangeEducation} handleEAdd={handleAddEducation}
+                                               handleEDelete={handleDeleteEducation}
+
                                                description={description} setDescription={setDescription}/> </Box>
                     <Box width={"45%"}> <Output firstName={firstName}
                                                 lastName={lastName}
@@ -113,7 +175,8 @@ const App = () => {
                                                 adress={address}
                                                 phone={phone}
                                                 email={email}
-                                                exp={exp.experience}
+                                                exp={exp.experience} ed={exp.education}
+                                                ref={componentRef}
                                                 description={description}/>  </Box>
                 </Flex>
 

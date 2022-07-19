@@ -103,6 +103,8 @@ const Output = (props) =>  {
 
                     </VStack>
 
+
+
                     <Spacer />
 
 
@@ -112,9 +114,9 @@ const Output = (props) =>  {
                 </Box>
 
             </Flex>
+        <Button colorScheme={"primary"} onClick={handlePrint}> Print </Button>
 
-
-    </Flex> </div> <Button onClick={handlePrint}> Print </Button>
+    </Flex> </div>
     </> )
 }
 

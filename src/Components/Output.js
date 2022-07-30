@@ -1,25 +1,17 @@
 import React, {  useRef  } from "react";
-import General from "./General.js"
-import Experience from "./Experience";
-import Education from "./Education";
-import App from "../App";
 import { useReactToPrint } from 'react-to-print';
 
 import {
     Box,
     Button,
-    Container,
     Divider,
     Flex,
     Heading,
     HStack,
     Image,
-    Spacer,
     Text,
-    VStack,
-    WrapItem
+    VStack
 } from "@chakra-ui/react";
-import styled from "@emotion/styled";
 
 const Output = (props) =>  {
 

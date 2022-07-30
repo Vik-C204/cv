@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import {Box, Button, Heading, Input, Stack, Textarea} from "@chakra-ui/react";
-import { extendTheme } from "@chakra-ui/react"
+import React from "react";
+import {Box, Button, Heading, Input, Stack} from "@chakra-ui/react";
 
 const Experience = (props) => {
 

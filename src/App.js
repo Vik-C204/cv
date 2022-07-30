@@ -1,26 +1,18 @@
-import React, {useRef, useState} from "react";
-import General from "./Components/General.js"
-import Experience from "./Components/Experience";
-import Education from "./Components/Education";
-import First from "./Components/First";
+import React, {useState} from "react";
+import Input from "./Components/Input";
 import uniqid from "uniqid"
 import theme from "./Theme";
-import { useReactToPrint } from 'react-to-print';
-import "./Components/print.css";
+import examplePhoto from "./Components/examplePhoto.png"
 
-import {ChakraProvider, Flex, Box, Center, Text, Button, Container} from "@chakra-ui/react";
+import {ChakraProvider, Flex, Box, Center, Text, Heading} from "@chakra-ui/react";
 import Output from "./Components/Output";
-import Header from "./Components/Header";
-import { extendTheme } from "@chakra-ui/react"
-import { useTheme } from "@chakra-ui/react";
-import styled from "@emotion/styled";
 
 const App = () => {
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [title, setTitle] = useState("");
-    const [photo, setPhoto] = useState("https://michalosman.github.io/cv-application/static/media/empty_avatar.cedf234c.png");
+    const [photo, setPhoto] = useState(examplePhoto);
     const [address, setAddress] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
@@ -45,10 +37,6 @@ const App = () => {
                 to: "",
             },
         ],})
-
-    //const componentRef = useRef()
-
-    //const handlePrint = useReactToPrint({ content: () => componentRef.current })
 
     const handleChangeExperience = (e, id) => {
         const { name, value } = e.target
@@ -136,40 +124,28 @@ const App = () => {
     }
 
 
-
-
-    const [position, setPosition] = useState("");
-    const [company, setCompany] = useState("");
-    const [city, setCity] = useState("");
-    const [from, setFrom] = useState("");
-    const [to, setTo] = useState("");
-
-
-
-    const theme1 = useTheme();
-
-
   return (
       <ChakraProvider theme={theme}>
             <Flex flexDir={"column"}>
 
-                <Header />
+                <Center maxWidth={"full"}  bgColor='primary.500' minHeight={"120px"}>
+                    <Heading as={"h1"} color={"#ffffff"}> CV Maker 3000 </Heading>
+                </Center>
 
                 <Flex p={4} bgColor={"#cccccc"} justifyContent={"space-evenly"}>
-                     <Box width={"45%"}> <First firstName={firstName} setFirstName={setFirstName}
-                                               lastName={lastName} setLastName={setLastName}
-                                               title={title} setTitle={setTitle}
-                                               photo={photo} setPhoto={setPhoto}
-                                               adress={address} setAddress={setAddress}
-                                               phone={phone} setPhone={setPhone}
-                                               email={email} setEmail={setEmail} handleChange={handleChangeExperience}
-                                               handleAdd={handleAddExperience} handleDelete={handleDeleteExperience}
-                                               exp={exp.experience} edu={exp.education}
-                                               //onPrint={handlePrint}
-                                               handleEChange={handleChangeEducation} handleEAdd={handleAddEducation}
-                                               handleEDelete={handleDeleteEducation}
+                     <Box width={"45%"}> <Input firstName={firstName} setFirstName={setFirstName}
+                                                lastName={lastName} setLastName={setLastName}
+                                                title={title} setTitle={setTitle}
+                                                photo={photo} setPhoto={setPhoto}
+                                                adress={address} setAddress={setAddress}
+                                                phone={phone} setPhone={setPhone}
+                                                email={email} setEmail={setEmail} handleChange={handleChangeExperience}
+                                                handleAdd={handleAddExperience} handleDelete={handleDeleteExperience}
+                                                exp={exp.experience} edu={exp.education}
+                                                handleEChange={handleChangeEducation} handleEAdd={handleAddEducation}
+                                                handleEDelete={handleDeleteEducation}
 
-                                               description={description} setDescription={setDescription}/> </Box>
+                                                description={description} setDescription={setDescription}/> </Box>
                     <Box width={"45%"}> <Output firstName={firstName}
                                                 lastName={lastName}
                                                 title={title}
@@ -178,7 +154,6 @@ const App = () => {
                                                 phone={phone}
                                                 email={email}
                                                 exp={exp.experience} ed={exp.education}
-                                                //ref={componentRef}
                                                description={description}/> </Box>
                 </Flex>
 

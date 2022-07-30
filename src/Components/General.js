@@ -1,19 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     Box,
-    Button,
-    Container,
-    Divider,
-    Flex,
-    FormControl,
     Heading,
     Input,
     Stack,
-    Textarea,
-    VStack
+    Textarea
 } from "@chakra-ui/react";
-import App from "../App";
 import FilePicker from "./file-picker"
+import examplePhoto from "./examplePhoto.png"
+
 const General = (props) => {
 
     const imageHandler = (e) => {
@@ -28,11 +23,11 @@ const General = (props) => {
 
     return <Stack p={4}>
         <Heading as={"h2"} size={"md"} p={2}> Personal Information </Heading>
-        <Input placeholder={"First Name"} bgColor={"#ffffff"} onChange={event => props.setFirstName(event.target.value)}/>
+        <Input placeholder={"Input Name"} bgColor={"#ffffff"} onChange={event => props.setFirstName(event.target.value)}/>
         <Input placeholder={"Last Name"} bgColor={"#ffffff"} onChange={event => props.setLastName(event.target.value)}/>
         <Input placeholder={"Title"} bgColor={"#ffffff"} onChange={event => props.setTitle(event.target.value)}/>
         <Box bgColor={"white"}> <FilePicker width={"100%"}
-                onFileChange={(fileList) => { fileList[0] === undefined ? props.setPhoto("https://michalosman.github.io/cv-application/static/media/empty_avatar.cedf234c.png") : imageHandler(fileList[0])}}
+                onFileChange={(fileList) => { fileList[0] === undefined ? props.setPhoto(examplePhoto) : imageHandler(fileList[0])}}
                 placeholder="Placeholder"
                 clearButtonLabel="Clear"
                 multipleFiles={false}

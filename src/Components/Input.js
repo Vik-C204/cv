@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import General from "./General.js"
 import Experience from "./Experience";
 import Education from "./Education";
-import App from "../App";
-import {Box, Button, Heading} from "@chakra-ui/react";
+import {Box} from "@chakra-ui/react";
 
-const First = (props) => {
+const Input = (props) => {
     return <Box bgColor={"#eeeeee"} border={"2px solid black"}>
         <General firstName={props.firstName} setFirstName={props.setFirstName}
                  lastName={props.lastName} setLastName={props.setLastName}
@@ -23,4 +22,4 @@ const First = (props) => {
     </Box>
 }
 
-export default First;
+export default Input;

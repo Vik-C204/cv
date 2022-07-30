@@ -9,7 +9,7 @@ const theme = extendTheme({
             200: "#90caf9",
             300: "#64b5f6",
             400: "#64b5f6",
-            500: "#333",
+            500: "#333", // Only transition between 500 and 600 matters
             600: "#111",
             700: "#1976d2",
             800: "#1565c0",
